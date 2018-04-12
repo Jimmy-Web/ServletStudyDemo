@@ -4,7 +4,7 @@
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
 	id="WebApp_ID" version="3.1">
 
-	<!-- 配置当前Web应用的初始化参数 -->
+	<!-- 配置当前Web应用的初始化参,可以被所有的Servlet所获取-->
 	<context-param>
 		<param-name>driver</param-name>
 		<param-value>com.mysql.jdbc.Driver</param-value>
@@ -18,7 +18,7 @@
 	<servlet>
 		<servlet-name>helloServlet</servlet-name>
 		<servlet-class>com.jimmy.servlet.HelloServlet</servlet-class>
-
+		<!-- Servlet内部的初始化参数,这个只能被当前Servlet获取 -->
 		<init-param>
 			<param-name>user</param-name>
 			<param-value>jimmy</param-value>
@@ -37,6 +37,7 @@
 		<url-pattern>/hello</url-pattern>
 	</servlet-mapping>
 
+	<!-- 使用通配符来配置servlet-mapping,并且只有两种格式(1)*.xxx或者*xxx(2)/* -->
 	<servlet-mapping>
 		<servlet-name>helloServlet</servlet-name>
 		<url-pattern>*.do</url-pattern>

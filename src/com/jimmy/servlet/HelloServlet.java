@@ -1,6 +1,7 @@
 package com.jimmy.servlet;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Enumeration;
 
 import javax.servlet.Servlet;
@@ -56,7 +57,7 @@ public class HelloServlet implements Servlet {
 		String servletName = arg0.getServletName();
 		System.out.println(servletName);
 		
-		//ServletContext可以由servlet  
+		//ServletContext代表当前web应用,可以看做是web应用的大管家,可以由servletConfig获取
 		ServletContext servletContext = arg0.getServletContext();
 		String driver = servletContext.getInitParameter("driver");
 		System.out.println("driver:" + driver);
@@ -67,6 +68,28 @@ public class HelloServlet implements Servlet {
 			System.out.println("####" + name + ":" + value);
 		}
 		
+		//获取Web中某个文件的绝对路径,这个路径是文件在服务器上的绝对路径,而不是部署之前的项目路径
+		String realPath = servletContext.getRealPath("/note.txt");
+		System.out.println(realPath);
+		
+		//获取当前Web应用的名称
+		String contextPath = servletContext.getContextPath();
+		System.out.println(contextPath);
+		
+		try {
+			ClassLoader classLoader = getClass().getClassLoader();
+			InputStream inputStream = classLoader.getResourceAsStream("resources/jdbc.properties");
+			System.out.println("方式1:" + inputStream);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		try {
+			InputStream inputStream = servletContext.getResourceAsStream("WEB-INF/classes/resources/jdbc.properties");
+			System.out.println("方式2:" + inputStream);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 	}
 
 	@Override
