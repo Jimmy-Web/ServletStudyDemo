@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	id="WebApp_ID" version="3.1">
+
+	<!-- 配置当前Web应用的初始化参数 -->
+	<context-param>
+		<param-name>driver</param-name>
+		<param-value>com.mysql.jdbc.Driver</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>jdbcUrl</param-name>
+		<param-value>jdbc:mysql:///wangxibin</param-value>
+	</context-param>
+
+	<servlet>
+		<servlet-name>helloServlet</servlet-name>
+		<servlet-class>com.jimmy.servlet.HelloServlet</servlet-class>
+
+		<init-param>
+			<param-name>user</param-name>
+			<param-value>jimmy</param-value>
+		</init-param>
+
+		<init-param>
+			<param-name>password</param-name>
+			<param-value>123</param-value>
+		</init-param>
+
+		<load-on-startup>0</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>helloServlet</servlet-name>
+		<url-pattern>/hello</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>helloServlet</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>helloServlet</servlet-name>
+		<url-pattern>/*</url-pattern>
+	</servlet-mapping>
+</web-app>
