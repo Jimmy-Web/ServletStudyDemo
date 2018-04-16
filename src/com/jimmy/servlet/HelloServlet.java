@@ -68,8 +68,9 @@ public class HelloServlet implements Servlet {
 			System.out.println("####" + name + ":" + value);
 		}
 		
+		//note.txt在硬盘中的绝对路径E:\eclipse\workspace\ServletStudyDemo\note.txt
 		//获取Web中某个文件的绝对路径,这个路径是文件在服务器上的绝对路径,而不是部署之前的项目路径
-		String realPath = servletContext.getRealPath("/note.txt");
+		String realPath = servletContext.getRealPath("note.txt");
 		System.out.println(realPath);
 		
 		//获取当前Web应用的名称
@@ -85,6 +86,7 @@ public class HelloServlet implements Servlet {
 		}
 		
 		try {
+			//要相对于该应用部署完毕的根目录,该项目部署完毕之后的根目录是"ServletStudyDemo"
 			InputStream inputStream = servletContext.getResourceAsStream("WEB-INF/classes/resources/jdbc.properties");
 			System.out.println("方式2:" + inputStream);
 		} catch (Exception e) {
