@@ -1,6 +1,7 @@
 package com.jimmy.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Enumeration;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -71,7 +72,6 @@ public class LoginServlet implements Servlet {
 				System.out.println("value= " + s);
 			}
 		}
-		
 		//HttpServletRequest是ServletRequest的子接口,针对于HTTP请求所定义	,里面包含了大量获取HTTP信息的数据
 		HttpServletRequest httpServletRequest = (HttpServletRequest)request;
 		//获取请求的uri
@@ -87,6 +87,20 @@ public class LoginServlet implements Servlet {
 		//获取请求Servlet的映射路径
 		String 	servletPath = httpServletRequest.getServletPath();
 		System.out.println("Servlet的映射路径:" + servletPath);
+
+		//ServletReponse：封装了响应信息，如果想给用户什么响应，具体可以使用该接口的方法实现
+		//HttpServletReponse：是ServletResponse的子接口
+		
+		//设置响应的类型，比如我设置为：application/msword 然后在printWrite()中打印Hello World 
+		//那么在浏览器中就会下载一个包含Hello World的world文件
+//		response.setContentType("application/msword");
+			
+		//getWriter()：返回PrintWriter对象，调用该对象的print(String s)方法，将输入的字符串打印到客户的浏览器中
+		PrintWriter printWriter =  response.getWriter();
+		printWriter.print("Hello world");
+		
+		
+		
 		
 	}
 
