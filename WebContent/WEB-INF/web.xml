@@ -3,18 +3,23 @@
 	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
 	id="WebApp_ID" version="3.1">
-
 	<!-- 配置当前Web应用的初始化参,可以被所有的Servlet所获取 -->
 	<context-param>
 		<param-name>driver</param-name>
 		<param-value>com.mysql.jdbc.Driver</param-value>
 	</context-param>
-
 	<context-param>
 		<param-name>jdbcUrl</param-name>
 		<param-value>jdbc:mysql:///wangxibin</param-value>
 	</context-param>
-
+	<context-param>
+		<param-name>user</param-name>
+		<param-value>jimmy</param-value>
+	</context-param>
+	<context-param>
+		<param-name>password</param-name>
+		<param-value>123</param-value>
+	</context-param>
 	<servlet>
 		<servlet-name>helloServlet</servlet-name>
 		<servlet-class>com.jimmy.servlet.HelloServlet</servlet-class>
@@ -23,12 +28,10 @@
 			<param-name>user</param-name>
 			<param-value>jimmy</param-value>
 		</init-param>
-
 		<init-param>
 			<param-name>password</param-name>
 			<param-value>123</param-value>
 		</init-param>
-
 		<load-on-startup>0</load-on-startup>
 	</servlet>
 
@@ -49,6 +52,6 @@
 
 	<servlet-mapping>
 		<servlet-name>loginServlet</servlet-name>
-		<url-pattern>/login</url-pattern>
+		<url-pattern>/loginServlet</url-pattern>
 	</servlet-mapping>
 </web-app>
