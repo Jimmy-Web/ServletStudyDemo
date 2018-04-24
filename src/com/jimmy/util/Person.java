@@ -1,4 +1,4 @@
-package com.jimmy.demo;
+package com.jimmy.util;
 
 public class Person {
 
