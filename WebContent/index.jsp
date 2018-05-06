@@ -14,5 +14,14 @@
 		System.out.println(person.getPersonInfo());
 	%>
 
+	<%
+		String name = request.getParameter("name");
+		System.out.print(name);
+	%>
+	
+	<%
+		response.get
+		System.out.print(name);
+	%>
 </body>
 </html>

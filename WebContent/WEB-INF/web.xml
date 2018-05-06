@@ -56,6 +56,6 @@
 
 	<servlet-mapping>
 		<servlet-name>loginServlet</servlet-name>
-		<url-pattern>/loginServlet</url-pattern>
+		<url-pattern>/login.do</url-pattern>
 	</servlet-mapping>
 </web-app>
