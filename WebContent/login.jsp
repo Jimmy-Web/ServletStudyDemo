@@ -13,6 +13,7 @@
 <title>登录</title>
 <meta name="renderer" content="webkit">
 <meta http-equiv="Cache-Control" content="no-siteapp" />
+<!-- JavaWeb路径是一个非常值得注意的问题，因为浏览器跟服务器的根路径“/”表示的意思是不同的 -->
 <link rel="stylesheet" href="res/css/amazeui.min.css">
 <link rel="stylesheet" href="res/css/app.css">
 </head>
@@ -20,24 +21,26 @@
 	<div class="am-g myapp-login">
 		<div class="myapp-login-logo-block">
 			<div class="myapp-login-logo-text">
-				<div class="myapp-login-logo-text">
-					Browser<span>Sync</span> <i class="am-icon-skyatlas"></i>
-				</div>
+				<!-- 				<div class="myapp-login-logo-text"> -->
+				<!-- 					Browser<span>Sync</span> <i class="am-icon-skyatlas"></i> -->
+				<!-- 				</div> -->
+				<div class="myapp-login-logo-text">JavaWeb从入门到精通</div>
 			</div>
 
 			<div class="login-font">
 				<i></i><span></span>
 			</div>
 			<div class="am-u-sm-10 login-am-center">
-				<form action="login.do" class="am-form">
+				<form action="index.jsp" class="am-form" onsubmit="return submit()">
 					<fieldset>
 						<div class="am-form-group">
-							<input type="email" class="" id="doc-ipt-email-1"
+							<input type="text" class="" id="doc-ipt-email-1" name="userName"
 								placeholder="请输入手机号/电子邮件/账号">
 						</div>
+						<br />
 						<div class="am-form-group">
 							<input type="password" class="" id="doc-ipt-pwd-1"
-								placeholder="请输入密码">
+								name="password" placeholder="请输入密码">
 						</div>
 						<p>
 							<button type="submit" class="am-btn am-btn-default">登录</button>
@@ -50,5 +53,6 @@
 	<script src="res/js/jquery.min.js"></script>
 	<script src="res/js/amazeui.min.js"></script>
 	<script src="res/js/app.js"></script>
+	<script type="text/javascript" src="res/js/login/login.js"></script>
 </body>
 </html>

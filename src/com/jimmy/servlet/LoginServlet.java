@@ -36,7 +36,7 @@ public class LoginServlet implements Servlet {
 	@Override
 	public void init(ServletConfig arg0) throws ServletException {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -54,8 +54,10 @@ public class LoginServlet implements Servlet {
 		System.out.println("用户名:" + userName + "---" + "密码:" + password);
 		// getParameterValues()用来获取传递过来的参数名带有多组数据的时候
 		String[] parms = request.getParameterValues("insteresting");
-		for (String parm : parms) {
-			System.out.println("interesting:" + parm);
+		if (parms != null && parms.length > 0) {
+			for (String parm : parms) {
+				System.out.println("interesting:" + parm);
+			}
 		}
 		Enumeration<String> enumeration = request.getParameterNames();
 		while (enumeration.hasMoreElements()) {
@@ -72,33 +74,34 @@ public class LoginServlet implements Servlet {
 				System.out.println("value= " + s);
 			}
 		}
-		//HttpServletRequest是ServletRequest的子接口,针对于HTTP请求所定义	,里面包含了大量获取HTTP信息的数据
-		HttpServletRequest httpServletRequest = (HttpServletRequest)request;
-		//获取请求的uri
+		// HttpServletRequest是ServletRequest的子接口,针对于HTTP请求所定义
+		// ,里面包含了大量获取HTTP信息的数据
+		HttpServletRequest httpServletRequest = (HttpServletRequest) request;
+		// 获取请求的uri
 		String uri = httpServletRequest.getRequestURI();
-		System.out.println("HTTP请求的uri:"+uri);
-		//获取请求的方式	
+		System.out.println("HTTP请求的uri:" + uri);
+		// 获取请求的方式
 		String reqMethod = httpServletRequest.getMethod();
 		System.out.println("HTTP请求的方式:" + reqMethod);
-		//如果是一个Get请求,获取请求参数对应的那个字符串,即?后的那个字符串
-		//如果是一个post请求,那么queryString为null
+		// 如果是一个Get请求,获取请求参数对应的那个字符串,即?后的那个字符串
+		// 如果是一个post请求,那么queryString为null
 		String queryString = httpServletRequest.getQueryString();
 		System.out.println(queryString);
-		//获取请求Servlet的映射路径
-		String 	servletPath = httpServletRequest.getServletPath();
+		// 获取请求Servlet的映射路径
+		String servletPath = httpServletRequest.getServletPath();
 		System.out.println("Servlet的映射路径:" + servletPath);
 
-		//ServletReponse：封装了响应信息，如果想给用户什么响应，具体可以使用该接口的方法实现
-		//HttpServletReponse：是ServletResponse的子接口
-		
-		//设置响应的类型，比如我设置为：application/msword 然后在printWrite()中打印Hello World 
-		//那么在浏览器中就会下载一个包含Hello World的world文件
-//		response.setContentType("application/msword");
-			
-		//getWriter()：返回PrintWriter对象，调用该对象的print(String s)方法，将输入的字符串打印到客户的浏览器中
-		PrintWriter printWriter =  response.getWriter();
+		// ServletReponse：封装了响应信息，如果想给用户什么响应，具体可以使用该接口的方法实现
+		// HttpServletReponse：是ServletResponse的子接口
+
+		// 设置响应的类型，比如我设置为：application/msword 然后在printWrite()中打印Hello World
+		// 那么在浏览器中就会下载一个包含Hello World的world文件
+		// response.setContentType("application/msword");
+
+		// getWriter()：返回PrintWriter对象，调用该对象的print(String s)方法，将输入的字符串打印到客户的浏览器中
+		PrintWriter printWriter = response.getWriter();
 		printWriter.print("Hello world");
-			
+
 	}
 
 }
